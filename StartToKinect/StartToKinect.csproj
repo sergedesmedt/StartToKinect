@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -76,12 +77,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\ShowDepthFrameBasicSampleCommand.cs" />
     <Compile Include="Frames\ColorFramesBasicUserControl.xaml.cs">
       <DependentUpon>ColorFramesBasicUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frames\ColorFramesBasicUserControlModel.cs" />
+    <Compile Include="Frames\DepthFramesBasicUserControl.xaml.cs">
+      <DependentUpon>DepthFramesBasicUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\DepthFramesBasicUserControlModel.cs" />
+    <Compile Include="Frames\FrameConverters\ColorFrameConverter.cs" />
+    <Compile Include="Frames\FrameConverters\DepthFrameConverter.cs" />
+    <Compile Include="IViewModelLifetime.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Page Include="Frames\ColorFramesBasicUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Frames\DepthFramesBasicUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -93,7 +106,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Commands\ShowColorFramesBasicSample.cs" />
+    <Compile Include="Commands\ShowColorFramesBasicSampleCommand.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

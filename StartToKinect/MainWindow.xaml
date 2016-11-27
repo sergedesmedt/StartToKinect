@@ -17,7 +17,8 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Button x:Name="button" Content="Basic Colorframe" Command="{Binding ShowColorFramesBasics}" Grid.Row="0" Grid.Column="0" /> 
+        <Button Content="Basic Colorframe" Command="{Binding ShowColorFramesBasics}" Grid.Row="0" Grid.Column="0" />
+        <Button Content="Basic Depthframe" Command="{Binding ShowDepthFramesBasics}" Grid.Row="1" Grid.Column="0" />
         <ContentControl x:Name="SampleHolder"  Grid.Row="0" Grid.Column="1" Grid.RowSpan="3" >
             
         </ContentControl>

@@ -5,8 +5,6 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StartToKinect", "StartToKinect.csproj", "{5C54D7B4-B1B4-4965-97F6-CFE8CB8E6A0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColorBasics-WPF", "..\..\..\KinectSdkSamples\ColorBasics-WPF\ColorBasics-WPF.csproj", "{4467C0A4-9040-48BF-B9B7-911A4148D013}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{5C54D7B4-B1B4-4965-97F6-CFE8CB8E6A0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C54D7B4-B1B4-4965-97F6-CFE8CB8E6A0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C54D7B4-B1B4-4965-97F6-CFE8CB8E6A0A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4467C0A4-9040-48BF-B9B7-911A4148D013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4467C0A4-9040-48BF-B9B7-911A4148D013}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4467C0A4-9040-48BF-B9B7-911A4148D013}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4467C0A4-9040-48BF-B9B7-911A4148D013}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,8 +9,8 @@ using System.Windows.Input;
 namespace StartToKinect {
     public class MainWindowViewModel {
 
-        public string WhayToDo { get; private set; } = "Wat te doen";
+        public ICommand ShowColorFramesBasics { get; private set; } = new ShowColorFramesBasicSampleCommand();
 
-        public ICommand ShowColorFramesBasics { get; private set; } = new ShowColorFramesBasicSample();
+        public ICommand ShowDepthFramesBasics { get; private set; } = new ShowDepthFrameBasicSampleCommand();
     }
 }

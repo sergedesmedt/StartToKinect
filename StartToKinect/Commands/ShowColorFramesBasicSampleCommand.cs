@@ -7,10 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace StartToKinect.Commands {
-    class ShowColorFramesBasicSample : RelayCommand {
+    class ShowColorFramesBasicSampleCommand : RelayCommand {
         public const string Message = "ShowColorFramesBasicSample";
 
-        public ShowColorFramesBasicSample() : base(() => { Messenger.Default.Send(new NotificationMessage(Message)); }) {
+        public ShowColorFramesBasicSampleCommand() : base(() => { Messenger.Default.Send(new NotificationMessage(Message)); }) {
         }
     }
 }

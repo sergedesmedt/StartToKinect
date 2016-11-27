@@ -27,8 +27,11 @@ namespace StartToKinect {
         }
 
         private void NotificationMessageReceived(NotificationMessage msg) {
-            if (msg.Notification == ShowColorFramesBasicSample.Message) {
+            if (msg.Notification == ShowColorFramesBasicSampleCommand.Message) {
                 this.SampleHolder.Content = new ColorFramesBasicUserControl();
+            }
+            if (msg.Notification == ShowDepthFrameBasicSampleCommand.Message) {
+                this.SampleHolder.Content = new DepthFramesBasicUserControl();
             }
         }
     }
