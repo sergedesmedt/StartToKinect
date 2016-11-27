@@ -10,11 +10,15 @@ using System.Threading.Tasks;
 
 namespace StartToKinect {
     class ViewModelLocator {
+
+        IViewModelLifetime currentViewModel;
+
         static ViewModelLocator() {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             SimpleIoc.Default.Register<MainWindowViewModel>();
             SimpleIoc.Default.Register<ColorFramesBasicUserControlModel>();
+            SimpleIoc.Default.Register<DepthFramesBasicUserControlModel>();
         }
 
         public MainWindowViewModel MainWindowViewModel {
@@ -25,8 +29,27 @@ namespace StartToKinect {
 
         public ColorFramesBasicUserControlModel ColorFramesBasicUserControlModel {
             get {
-                return ServiceLocator.Current.GetInstance<ColorFramesBasicUserControlModel>();
+                if (currentViewModel != null) {
+                    currentViewModel.Destroy();
+                }
+                var vm = ServiceLocator.Current.GetInstance<ColorFramesBasicUserControlModel>();
+                vm.Initialize();
+                currentViewModel = vm;
+                return vm;
             }
         }
+
+        public DepthFramesBasicUserControlModel DepthFramesBasicUserControlModel {
+            get {
+                if (currentViewModel != null) {
+                    currentViewModel.Destroy();
+                }
+                var vm = ServiceLocator.Current.GetInstance<DepthFramesBasicUserControlModel>();
+                vm.Initialize();
+                currentViewModel = vm;
+                return vm;
+            }
+        }
+
     }
 }
