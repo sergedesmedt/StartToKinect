@@ -14,19 +14,18 @@ namespace StartToKinect.Frames {
     class ColorFramesBasicUserControlModel : ViewModelBase, IViewModelLifetime {
 
         private KinectSensor kinectSensor = null;
-        private ColorFrameReader colorFrameReader = null;
-        private WriteableBitmap colorBitmap = null;
+        private WriteableBitmap targetBitmap = null;
 
-        public ColorFramesBasicUserControlModel() {
-            kinectSensor = KinectSensor.GetDefault();
-        }
+        private ColorFrameReader colorFrameReader = null;
 
         public void Initialize() {
+            kinectSensor = KinectSensor.GetDefault();
+
             colorFrameReader = kinectSensor.ColorFrameSource.OpenReader();
             colorFrameReader.FrameArrived += Reader_FrameArrived;
 
             var frameDescription = kinectSensor.ColorFrameSource.CreateFrameDescription(ColorImageFormat.Bgra);
-            colorBitmap = ColorFrameConverter.GetBitmapFromFrameDescription(frameDescription);
+            targetBitmap = ColorFrameConverter.GetBitmapFromFrameDescription(frameDescription);
 
             kinectSensor.Open();
         }
@@ -42,7 +41,7 @@ namespace StartToKinect.Frames {
         /// </summary>
         public ImageSource ImageSource {
             get {
-                return colorBitmap;
+                return targetBitmap;
             }
         }
 
@@ -50,7 +49,7 @@ namespace StartToKinect.Frames {
             // ColorFrame is IDisposable
             using (ColorFrame colorFrame = e.FrameReference.AcquireFrame()) {
                 if (colorFrame != null) {
-                    ColorFrameConverter.FillFromFrame(colorBitmap, colorFrame);
+                    ColorFrameConverter.FillFromFrame(targetBitmap, colorFrame);
                 }
             }
         }

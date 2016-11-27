@@ -47,6 +47,7 @@ namespace StartToKinect.Frames.FrameConverters {
             if (depthFrameProcessed) {
                 RenderDepthPixels(bitmap);
             }
+
             return "";
         }
 

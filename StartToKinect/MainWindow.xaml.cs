@@ -33,6 +33,9 @@ namespace StartToKinect {
             if (msg.Notification == ShowDepthFrameBasicSampleCommand.Message) {
                 this.SampleHolder.Content = new DepthFramesBasicUserControl();
             }
+            if (msg.Notification == ShowInfraredFrameBasicSampleCommand.Message) {
+                this.SampleHolder.Content = new InfraredFramesBasicUserControl();
+            }
         }
     }
 }

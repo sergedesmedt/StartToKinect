@@ -6,32 +6,34 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace StartToKinect.Frames {
-    class DepthFramesBasicUserControlModel : ViewModelBase, IViewModelLifetime {
+    class InfraredFramesBasicUserControlModel : ViewModelBase, IViewModelLifetime {
 
         private KinectSensor kinectSensor = null;
         private WriteableBitmap targetBitmap = null;
 
-        private DepthFrameReader depthFrameReader = null;
-        private DepthFrameConverter converter = new DepthFrameConverter();
+        private InfraredFrameReader infraredFrameReader = null;
+        private InfraredFrameConverter converter = new InfraredFrameConverter();
 
         public void Initialize() {
             kinectSensor = KinectSensor.GetDefault();
-            depthFrameReader = kinectSensor.DepthFrameSource.OpenReader();
-            depthFrameReader.FrameArrived += Reader_FrameArrived;
 
-            var frameDescription = kinectSensor.DepthFrameSource.FrameDescription;
+            infraredFrameReader = kinectSensor.InfraredFrameSource.OpenReader();
+            infraredFrameReader.FrameArrived += Reader_FrameArrived;
+
+            var frameDescription = kinectSensor.InfraredFrameSource.FrameDescription;
             targetBitmap = converter.GetBitmapFromFrameDescription(frameDescription);
 
             kinectSensor.Open();
         }
 
         public void Destroy() {
-            depthFrameReader.FrameArrived -= Reader_FrameArrived;
-            depthFrameReader.Dispose();
+            infraredFrameReader.FrameArrived -= Reader_FrameArrived;
+            infraredFrameReader.Dispose();
             kinectSensor.Close();
         }
 
@@ -44,10 +46,10 @@ namespace StartToKinect.Frames {
             }
         }
 
-        private void Reader_FrameArrived(object sender, DepthFrameArrivedEventArgs e) {
-            using (DepthFrame depthFrame = e.FrameReference.AcquireFrame()) {
-                if (depthFrame != null) {
-                    converter.FillFromFrame(targetBitmap, depthFrame);
+        private void Reader_FrameArrived(object sender, InfraredFrameArrivedEventArgs e) {
+            using (InfraredFrame infraredFrame = e.FrameReference.AcquireFrame()) {
+                if (infraredFrame != null) {
+                    converter.FillFromFrame(targetBitmap, infraredFrame);
                 }
             }
         }
