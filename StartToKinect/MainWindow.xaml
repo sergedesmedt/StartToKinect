@@ -12,6 +12,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -21,6 +22,7 @@
         <Button Content="Basic Colorframe" Command="{Binding ShowColorFramesBasics}" Grid.Row="0" Grid.Column="0" />
         <Button Content="Basic Depthframe" Command="{Binding ShowDepthFramesBasics}" Grid.Row="1" Grid.Column="0" />
         <Button Content="Basic Infraredframe" Command="{Binding ShowInfrafredFramesBasics}" Grid.Row="2" Grid.Column="0" />
+        <Button Content="Basic Bodyframe" Command="{Binding ShowBodyFramesBasics}" Grid.Row="3" Grid.Column="0" />
         <ContentControl x:Name="SampleHolder"  Grid.Row="0" Grid.Column="1" Grid.RowSpan="4" >
             
         </ContentControl>

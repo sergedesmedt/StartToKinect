@@ -14,5 +14,7 @@ namespace StartToKinect {
         public ICommand ShowDepthFramesBasics { get; private set; } = new ShowDepthFrameBasicSampleCommand();
 
         public ICommand ShowInfrafredFramesBasics { get; private set; } = new ShowInfraredFrameBasicSampleCommand();
+
+        public ICommand ShowBodyFramesBasics { get; private set; } = new ShowBodyFramesBasicSampleCommand();
     }
 }

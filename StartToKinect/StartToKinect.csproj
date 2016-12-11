@@ -78,7 +78,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\ShowDepthFrameBasicSampleCommand.cs" />
+    <Compile Include="Commands\ShowBodyFramesBasicSampleCommand.cs" />
     <Compile Include="Commands\ShowInfraredFrameBasicSampleCommand.cs" />
+    <Compile Include="Frames\BodyFramesBasicUserControl.xaml.cs">
+      <DependentUpon>BodyFramesBasicUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Frames\BodyFramesBasicUserControlModel.cs" />
     <Compile Include="Frames\ColorFramesBasicUserControl.xaml.cs">
       <DependentUpon>ColorFramesBasicUserControl.xaml</DependentUpon>
     </Compile>
@@ -89,6 +94,7 @@
     <Compile Include="Frames\DepthFramesBasicUserControlModel.cs" />
     <Compile Include="Frames\FrameConverters\ColorFrameConverter.cs" />
     <Compile Include="Frames\FrameConverters\DepthFrameConverter.cs" />
+    <Compile Include="Frames\FrameConverters\BodyFrameConverter.cs" />
     <Compile Include="Frames\FrameConverters\InfraredFrameConverter.cs" />
     <Compile Include="Frames\FrameViewModel.cs" />
     <Compile Include="Frames\InfraredFramesBasicUserControl.xaml.cs">
@@ -97,6 +103,10 @@
     <Compile Include="Frames\InfraredFramesBasicUserControlModel.cs" />
     <Compile Include="IViewModelLifetime.cs" />
     <Compile Include="ViewModelLocator.cs" />
+    <Page Include="Frames\BodyFramesBasicUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Frames\ColorFramesBasicUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

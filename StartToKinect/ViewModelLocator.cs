@@ -20,6 +20,7 @@ namespace StartToKinect {
             SimpleIoc.Default.Register<ColorFramesBasicUserControlModel>();
             SimpleIoc.Default.Register<DepthFramesBasicUserControlModel>();
             SimpleIoc.Default.Register<InfraredFramesBasicUserControlModel>();
+            SimpleIoc.Default.Register<BodyFramesBasicUserControlModel>();
         }
 
         public MainWindowViewModel MainWindowViewModel {
@@ -64,5 +65,16 @@ namespace StartToKinect {
             }
         }
 
+        public BodyFramesBasicUserControlModel BodyFramesBasicUserControlModel {
+            get {
+                if (currentViewModel != null) {
+                    currentViewModel.Destroy();
+                }
+                var vm = ServiceLocator.Current.GetInstance<BodyFramesBasicUserControlModel>();
+                vm.Initialize();
+                currentViewModel = vm;
+                return vm;
+            }
+        }
     }
 }
