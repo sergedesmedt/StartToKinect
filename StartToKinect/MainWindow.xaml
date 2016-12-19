@@ -1,12 +1,15 @@
-﻿<Window x:Class="StartToKinect.MainWindow"
+﻿<Controls:MetroWindow x:Class="StartToKinect.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:local="clr-namespace:StartToKinect"
         DataContext="{Binding MainWindowViewModel, Source={StaticResource Locator}}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        ResizeMode="CanResizeWithGrip">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -19,12 +22,12 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <Button Content="Basic Colorframe" Command="{Binding ShowColorFramesBasics}" Grid.Row="0" Grid.Column="0" />
-        <Button Content="Basic Depthframe" Command="{Binding ShowDepthFramesBasics}" Grid.Row="1" Grid.Column="0" />
-        <Button Content="Basic Infraredframe" Command="{Binding ShowInfrafredFramesBasics}" Grid.Row="2" Grid.Column="0" />
-        <Button Content="Basic Bodyframe" Command="{Binding ShowBodyFramesBasics}" Grid.Row="3" Grid.Column="0" />
-        <ContentControl x:Name="SampleHolder"  Grid.Row="0" Grid.Column="1" Grid.RowSpan="4" >
+        <Button Content="Basic Colorframe" Style="{DynamicResource SquareButtonStyle}" Command="{Binding ShowColorFramesBasics}" Grid.Row="0" Grid.Column="0" />
+        <Button Content="Basic Depthframe" Style="{DynamicResource SquareButtonStyle}" Command="{Binding ShowDepthFramesBasics}" Grid.Row="1" Grid.Column="0" />
+        <Button Content="Basic Infraredframe" Style="{DynamicResource SquareButtonStyle}" Command="{Binding ShowInfrafredFramesBasics}" Grid.Row="2" Grid.Column="0" />
+        <Button Content="Basic Bodyframe" Style="{DynamicResource SquareButtonStyle}" Command="{Binding ShowBodyFramesBasics}" Grid.Row="3" Grid.Column="0" />
+        <ContentControl x:Name="SampleHolder"  Grid.Row="0" Grid.Column="1" Grid.RowSpan="5" >
             
         </ContentControl>
     </Grid>
-</Window>
+</Controls:MetroWindow>
