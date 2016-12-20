@@ -134,7 +134,7 @@
       <DependentUpon>InfraredFramesBasicUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Frames\InfraredFramesBasicUserControlModel.cs" />
-    <Compile Include="IViewModelLifetime.cs" />
+    <Compile Include="Frames\KinectViewModelBase.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Page Include="Frames\BodyFramesBasicUserControl.xaml">
       <SubType>Designer</SubType>

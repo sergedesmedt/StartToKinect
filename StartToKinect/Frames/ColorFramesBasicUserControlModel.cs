@@ -11,29 +11,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace StartToKinect.Frames {
-    class ColorFramesBasicUserControlModel : ViewModelBase, IViewModelLifetime {
+    class ColorFramesBasicUserControlModel : KinectViewModelBase {
 
-        private KinectSensor kinectSensor = null;
+        private KinectCapabilities kinectCapabilities;
         private WriteableBitmap targetBitmap = null;
 
         private ColorFrameReader colorFrameReader = null;
 
         public void Initialize() {
-            kinectSensor = KinectSensor.GetDefault();
+            base.Initialize();
 
-            colorFrameReader = kinectSensor.ColorFrameSource.OpenReader();
+            colorFrameReader = Sensor.ColorFrameSource.OpenReader();
             colorFrameReader.FrameArrived += Reader_FrameArrived;
 
-            var frameDescription = kinectSensor.ColorFrameSource.CreateFrameDescription(ColorImageFormat.Bgra);
+            var frameDescription = Sensor.ColorFrameSource.CreateFrameDescription(ColorImageFormat.Bgra);
             targetBitmap = ColorFrameConverter.GetBitmapFromFrameDescription(frameDescription);
 
-            kinectSensor.Open();
+            Sensor.Open();
         }
 
         public void Destroy() {
             colorFrameReader.FrameArrived -= Reader_FrameArrived;
             colorFrameReader.Dispose();
-            kinectSensor.Close();
+
+            base.Destroy();
         }
 
         /// <summary>

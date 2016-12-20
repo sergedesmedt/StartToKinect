@@ -11,30 +11,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace StartToKinect.Frames {
-    class InfraredFramesBasicUserControlModel : ViewModelBase, IViewModelLifetime {
+    class InfraredFramesBasicUserControlModel : KinectViewModelBase {
 
-        private KinectSensor kinectSensor = null;
         private WriteableBitmap targetBitmap = null;
 
         private InfraredFrameReader infraredFrameReader = null;
         private InfraredFrameConverter converter = new InfraredFrameConverter();
 
         public void Initialize() {
-            kinectSensor = KinectSensor.GetDefault();
+            base.Initialize();
 
-            infraredFrameReader = kinectSensor.InfraredFrameSource.OpenReader();
+            infraredFrameReader = Sensor.InfraredFrameSource.OpenReader();
             infraredFrameReader.FrameArrived += Reader_FrameArrived;
 
-            var frameDescription = kinectSensor.InfraredFrameSource.FrameDescription;
+            var frameDescription = Sensor.InfraredFrameSource.FrameDescription;
             targetBitmap = converter.GetBitmapFromFrameDescription(frameDescription);
 
-            kinectSensor.Open();
+            Sensor.Open();
         }
 
         public void Destroy() {
             infraredFrameReader.FrameArrived -= Reader_FrameArrived;
             infraredFrameReader.Dispose();
-            kinectSensor.Close();
+
+            base.Destroy();
         }
 
         /// <summary>

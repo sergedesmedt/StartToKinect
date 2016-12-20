@@ -10,29 +10,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace StartToKinect.Frames {
-    class DepthFramesBasicUserControlModel : ViewModelBase, IViewModelLifetime {
+    class DepthFramesBasicUserControlModel : KinectViewModelBase {
 
-        private KinectSensor kinectSensor = null;
         private WriteableBitmap targetBitmap = null;
 
         private DepthFrameReader depthFrameReader = null;
         private DepthFrameConverter converter = new DepthFrameConverter();
 
         public void Initialize() {
-            kinectSensor = KinectSensor.GetDefault();
-            depthFrameReader = kinectSensor.DepthFrameSource.OpenReader();
+            base.Initialize();
+
+            depthFrameReader = Sensor.DepthFrameSource.OpenReader();
             depthFrameReader.FrameArrived += Reader_FrameArrived;
 
-            var frameDescription = kinectSensor.DepthFrameSource.FrameDescription;
+            var frameDescription = Sensor.DepthFrameSource.FrameDescription;
             targetBitmap = converter.GetBitmapFromFrameDescription(frameDescription);
 
-            kinectSensor.Open();
+            Sensor.Open();
         }
 
         public void Destroy() {
             depthFrameReader.FrameArrived -= Reader_FrameArrived;
             depthFrameReader.Dispose();
-            kinectSensor.Close();
+
+            base.Destroy();
         }
 
         /// <summary>

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace StartToKinect {
     class ViewModelLocator {
 
-        IViewModelLifetime currentViewModel;
+        KinectViewModelBase currentViewModel;
 
         static ViewModelLocator() {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
