@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
              xmlns:local="clr-namespace:StartToKinect.Frames"
              DataContext="{Binding ColorFramesBasicUserControlModel, Source={StaticResource Locator}}"
              mc:Ignorable="d" 
@@ -12,8 +13,17 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
-            <RadioButton Content="Available" IsChecked="{Binding IsAvailable, Mode=OneWay}" />
+        <StackPanel Grid.Column="0" Margin="10">
+            <Button Content="Initialize" Command="{Binding InitializeCommand}" Margin="0,0,0,5" />
+            <Label Content="{Binding UniqueId, Mode=OneWay}" />
+            <Label Content="{Binding ColorFrameRelativeTime, Mode=OneWay}" />
+            <Controls:ToggleSwitch Header="Available" IsChecked="{Binding IsAvailable, Mode=OneWay}" Margin="0,0,0,5" />
+            <Controls:ToggleSwitch Header="Audio" IsChecked="{Binding IsAudioCapable, Mode=OneWay}" Margin="0,0,0,5" />
+            <Controls:ToggleSwitch Header="Expressions" IsChecked="{Binding IsExpressionsCapable, Mode=OneWay}" Margin="0,0,0,5" />
+            <Controls:ToggleSwitch Header="Face" IsChecked="{Binding IsFaceCapable, Mode=OneWay}" Margin="0,0,0,5" />
+            <Controls:ToggleSwitch Header="Gamechat" IsChecked="{Binding IsGamechatCapable, Mode=OneWay}" Margin="0,0,0,5" />
+            <Controls:ToggleSwitch Header="None" IsChecked="{Binding IsNoneCapable, Mode=OneWay}" Margin="0,0,0,5" />
+            <Controls:ToggleSwitch Header="Vision" IsChecked="{Binding IsVisionCapable, Mode=OneWay}" Margin="0,0,0,5" />
         </StackPanel>
         <Viewbox Grid.Column="1" HorizontalAlignment="Center">
             <Image Source="{Binding ImageSource}" Stretch="UniformToFill" />

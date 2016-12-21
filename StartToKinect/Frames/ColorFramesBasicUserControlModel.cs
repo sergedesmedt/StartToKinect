@@ -18,7 +18,7 @@ namespace StartToKinect.Frames {
 
         private ColorFrameReader colorFrameReader = null;
 
-        public void Initialize() {
+        public override void Initialize() {
             base.Initialize();
 
             colorFrameReader = Sensor.ColorFrameSource.OpenReader();
@@ -26,6 +26,7 @@ namespace StartToKinect.Frames {
 
             var frameDescription = Sensor.ColorFrameSource.CreateFrameDescription(ColorImageFormat.Bgra);
             targetBitmap = ColorFrameConverter.GetBitmapFromFrameDescription(frameDescription);
+            RaisePropertyChanged("ImageSource");
 
             Sensor.Open();
         }
@@ -37,12 +38,16 @@ namespace StartToKinect.Frames {
             base.Destroy();
         }
 
-        /// <summary>
-        /// Gets the bitmap to display
-        /// </summary>
         public ImageSource ImageSource {
-            get {
-                return targetBitmap;
+            get { return targetBitmap; }
+        }
+
+        string _colorFrameRelativeTime;
+        public string ColorFrameRelativeTime {
+            get { return _colorFrameRelativeTime; }
+            set {
+                _colorFrameRelativeTime = value;
+                RaisePropertyChanged();
             }
         }
 
@@ -50,6 +55,7 @@ namespace StartToKinect.Frames {
             // ColorFrame is IDisposable
             using (ColorFrame colorFrame = e.FrameReference.AcquireFrame()) {
                 if (colorFrame != null) {
+                    ColorFrameRelativeTime = colorFrame.RelativeTime.ToString();
                     ColorFrameConverter.FillFromFrame(targetBitmap, colorFrame);
                 }
             }

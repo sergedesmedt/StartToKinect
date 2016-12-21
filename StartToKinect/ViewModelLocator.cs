@@ -35,7 +35,7 @@ namespace StartToKinect {
                     currentViewModel.Destroy();
                 }
                 var vm = ServiceLocator.Current.GetInstance<ColorFramesBasicUserControlModel>();
-                vm.Initialize();
+                //vm.Initialize();
                 currentViewModel = vm;
                 return vm;
             }
@@ -47,7 +47,7 @@ namespace StartToKinect {
                     currentViewModel.Destroy();
                 }
                 var vm = ServiceLocator.Current.GetInstance<DepthFramesBasicUserControlModel>();
-                vm.Initialize();
+                //vm.Initialize();
                 currentViewModel = vm;
                 return vm;
             }
@@ -59,7 +59,7 @@ namespace StartToKinect {
                     currentViewModel.Destroy();
                 }
                 var vm = ServiceLocator.Current.GetInstance<InfraredFramesBasicUserControlModel>();
-                vm.Initialize();
+                //vm.Initialize();
                 currentViewModel = vm;
                 return vm;
             }
@@ -71,7 +71,7 @@ namespace StartToKinect {
                     currentViewModel.Destroy();
                 }
                 var vm = ServiceLocator.Current.GetInstance<BodyFramesBasicUserControlModel>();
-                vm.Initialize();
+                //vm.Initialize();
                 currentViewModel = vm;
                 return vm;
             }
